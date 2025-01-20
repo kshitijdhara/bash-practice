@@ -1,4 +1,5 @@
 #!/bin/bash
+# Purpose: This Script validates if the input is a valid ipv4 address or not
 set -x
 read -p "Enter the IP Adress: " IP
 count=1
