@@ -1,0 +1,17 @@
+#!/bin/bash
+set -x
+read -p "Enter the IP Adress: " IP
+count=1
+while [ $count -lt 5 ]; do
+ip_part=$(echo $IP | cut -d "." -f $count)
+if [[ $ip_part =~ [0-9]{1,3} ]]; then
+if [ $ip_part -gt 255 ]; then
+count=100
+fi
+fi
+done
+if [ $count -eq 100 ]; then
+echo "Invalid IP Address"
+else
+echo "Valid IP Address"
+fi

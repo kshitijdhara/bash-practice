@@ -1,0 +1,15 @@
+#!/bin/bash
+FILEPATH='/Users/kshitijdhara/Public/bash_practice/t'
+ERROR_PATTERN='lmaodead'
+if [ -f $FILEPATH ]; then
+    echo "File exists"
+    tail -f $FILEPATH | while read -r line; do
+        if grep "$ERROR_PATTERN*"; then
+            echo "Error found"
+            exit 2
+        fi
+    done
+else
+    echo "File does not exist"
+fi
+exit 1

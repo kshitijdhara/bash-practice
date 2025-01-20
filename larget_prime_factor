@@ -1,0 +1,36 @@
+#!/bin/bash
+# set -x
+echo "What is the largest prime factor of the number"
+number=600851475143
+prime_check(){
+	number=$1
+	count=1
+	flag=0
+	while [ $count -le $number ]; do
+		if [ $((number % count)) -eq 0 ]; then
+			flag=$((flag + 1))
+			# echo $((number % count))
+			# echo $count
+		fi
+		if [ $flag -ge 3 ]; then
+			echo "Not Prime"
+			return 1
+		fi
+		count=$((count + 1))
+		# echo $count
+	done
+	return 0
+}
+number=7
+copy_number=$((number - 1))
+# prime_factor=
+# while [ $copy_number -ge 0 ]; do
+# 	if [ $(prime_check $copy_number) -eq 0 ] && [ $((number % copy_number)) -eq 0 ]; then
+# 	# echo $copy_number
+# 	prime_factor=$copy_number
+# 	break
+# 	fi
+# 	copy_number=$((copy_number - 1))
+# done
+# echo $prime_factor
+echo $(prime_check $copy_number)

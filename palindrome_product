@@ -1,0 +1,29 @@
+#!/bin/bash
+reverse_number() {
+    rev=0
+    num=$1
+    while [ $num -gt 0 ]; do
+        digit=$((num % 10))
+        rev=$((rev * 10 + digit))
+        num=$(($num / 10))
+    done
+    echo $rev
+}
+reverse_number 12345
+i=999
+j=1
+max=0
+while [ $i -gt 0 ]; do
+    while [ $j -lt 999 ]; do
+        number=$((i * j))
+        if [ $number -eq $(reverse_number $number) ]; then
+            echo $number
+        if [ $max -lt $number ]; then
+            max=$number
+        fi
+        fi
+        j=$((j + 1))
+        done
+    i=$((i - 1))
+done
+echo $max
